@@ -21,6 +21,9 @@ let todoArr = Storage.getStorage();
 //form 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    if (input.value === "") {
+        return alert("You have to add something!");
+    }
     let id = Math.random() * 1000;
     const todo = new Todo(id, input.value);
     todoArr = [...todoArr, todo];
@@ -30,7 +33,7 @@ form.addEventListener("submit", (e) => {
     UI.removeTodo();
     // add to storage
     Storage.addTodoStorage(todoArr)
-
+    
 });
 
 // make object instance
